@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Básica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #17202a ;
+            background-image: url("https://wzhub.gg/images/maps/dark-aether-s5r.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .calculator {
+            border: 10px solid #45044b;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: white;
+            background-image: url('https://img.game8.co/3967014/dec2baea28dc3599c2adc402062c1381.jpeg/original');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        
+        }
+        #display {
+            width: 95%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            background-color: #f0f0f0;
+        }
+        .button {
+            width: 70px;
+            height: 70px;
+            font-size: 24px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: black;
+            border: none;
+            border-radius: 5px;            
+        }
+        .button:active {
+            background-color: #000000;
+        }
+        .row {
+            display: flex;
+        }
+        .button img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .zombis-button {
+            margin-top: 20px;
+            font-family: ari;
+            font-size: 24px;
+            padding: 10px 5px;
+            background-color: black;
+            color: orange;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .zombis-button:hover {
+            background-color: black;
+        } 
+        .link-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="row">
+        <button class="button" onclick="clearDisplay('c')"><img src="https://media.istockphoto.com/id/862002934/es/foto/luz-roja-pintura-letra-c-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro.jpg?s=612x612&w=0&k=20&c=OQwmXII-iyQiO3fgq49FMHXCkAqiBbQVgZEe9RmQ1FQ=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('/')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0vNWWnH6Q7l_L21Q4_jlZ5hb1pooXzMZ-SKuqzhIJB9e5DM23" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('*')"><img src="https://images.assetsdelivery.com/compings_v2/akpinart/akpinart2010/akpinart201000405.jpg" width="61" height="67">
+        </button>
+        <button class="button" onclick="deleteLast()"><img src="https://callofdutymaps.com/wp-content/uploads/wonder-Chrysalax.png" width="60" height="60">
+        </button>
+        </button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendToDisplay('7')"><img src="https://media.istockphoto.com/id/862003444/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-siete.jpg?s=612x612&w=0&k=20&c=24BLdfblogqpMlRwATbt5y5UjLle7Y2dLzNTLpG7gaE=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('8')"><img src="https://media.istockphoto.com/id/862003452/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-ocho.jpg?s=612x612&w=0&k=20&c=8xv452OudPC4FLeUPrS3za-F32xAzgjTAXypf-frfKU=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('9')"><img src="https://media.istockphoto.com/id/862003472/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-nueve.jpg?s=612x612&w=0&k=20&c=4XO5U3QyIt5FylPNMj1cPyv69RQa8U_skfTytp-47ew=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('-')"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSMiRoxdbl5ZE5tXYfH4T7RTCvjDWIFRRyNuJtWR8_rA05LdfO6" width="61" height="50"> 
+        </button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendToDisplay('4')"><img src="https://media.istockphoto.com/id/862003392/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-cuatro.jpg?s=612x612&w=0&k=20&c=QhJrNOL96wCIWBW27vHmmikGkkWMQL0_8_403DNerdE=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('5')"><img src="https://media.istockphoto.com/id/862003420/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-cinco.jpg?s=612x612&w=0&k=20&c=tx2gV8CLsOWV6QMhUt1La5uLXCCUMy04CiQO4axl-wg=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('6')"><img src="https://media.istockphoto.com/id/862003424/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-seis.jpg?s=612x612&w=0&k=20&c=w7QDkPdwErXtdVyzgnWN4spXHDx7Wu0Woojw_gRD6zQ=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('+')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIqEjClXT6CMhhgAlsCK5TWUItGu9Tv4ElIw&s" width="61" height="60">
+        </button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendToDisplay('1')"> <img src="https://media.istockphoto.com/id/862003354/es/foto/n%C3%BAmero-uno-rojo-pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro.jpg?s=612x612&w=0&k=20&c=T9RE92Q8ROrTYyDk8-6X6-EOCya2gVY7kg-qVJ5eUUQ= " width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('2')"><img src="https://media.istockphoto.com/id/862003406/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-dos.jpg?s=612x612&w=0&k=20&c=3nulNzBoZegXf5RcNsfzAoorhEe1rsjvL3aMlDsycw0=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('3')"> <img src="https://media.istockphoto.com/id/862003362/es/foto/pintura-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro-la-luz-roja-n%C3%BAmero-tres.jpg?s=612x612&w=0&k=20&c=8OOjc0T-PYowEOtAgFjPt04SN6P14kL8lxM2pl3IDVg=" width="61" height="68">
+        </button>
+        <button class="button" onclick="calculateResult('=')"><img src="https://www.epsilones.com/material/signos/028-aprox.jpg" width="61" height="68">
+        </button>
+    </div>
+    <div class="row">
+        <button class="button" style="width: 145px;" onclick="appendToDisplay('0')"><img src="https://media.istockphoto.com/id/862003478/es/foto/rojo-n%C3%BAmero-cero-luz-pintura-la-fotograf%C3%ADa-de-larga-exposici%C3%B3n-contra-un-fondo-negro.jpg?s=612x612&w=0&k=20&c=aNcJhwHGC9cC2RutixI8Isn_2kej4G_x_e347eAHkFw=" width="61" height="68">
+        </button>
+        <button class="button" onclick="appendToDisplay('.')"><img src="https://static.vecteezy.com/system/resources/previews/000/608/830/non_2x/vector-red-dots-background.jpg" width="61" height="68">
+        </button>
+        </button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="calcularRaizCuadrada()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0HHGAFeikgm151-cgZ14uUr-W66nfNTpK5g&s" width="60">
+        </button>
+        <button class="button" onclick="calcularPotenciaCuadrada()"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQD5dUqFl3bl_MB0Hv1P5PKY7txlnhAF_7NZhqz-__raMnoYTj-" width="60">
+        </button>
+        <button class="button" onclick="verificarParImpar()"><img src="https://bnetcmsus-a.akamaihd.net/cms/page_media/LPWFA1HQNO0I1699029466001.jpg" width="60">
+        </button>
+        <button class="button" onclick="verificarPrimo()"><img src="https://img.asmedia.epimg.net/resizer/v2/FIDXIM3X2NPA5FPINK6EGY4GLE.jpg?auth=9ac632fb28d71bb66cfaecec8d5664e68d6be85d30c18e1a9d5c90c7085d0756&width=1472&height=828&smart=true" width="60" height="50">
+        </button>
+        
+    </div>
+    <div class="link-container">
+        <h1>
+            <a href="https://youtu.be/knhUkKioASo?si=26XnMFjAFs9d0RdK" class="zombis-button" target="_blank">
+                BO6
+            </a>
+        </h1>
+    </div>
+</div>
+
+
+
+<script>
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function deleteLast() {
+        var display = document.getElementById('display').value;
+        document.getElementById('display').value = display.slice(0, -1);
+    }
+
+    function calculateResult() {
+        var display = document.getElementById('display').value;
+        try {
+            document.getElementById('display').value = eval(display);
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+
+    function calcularRaizCuadrada() {
+        let num = document.getElementById("display").value;
+        if (num === '') {
+            alert("Por favor ingresa un número.");
+            return;
+        }
+        let resultado = Math.sqrt(num);
+        document.getElementById("display").value = `√${num} = ${resultado}`;
+    }
+
+    function calcularPotenciaCuadrada() {
+        let num = document.getElementById("display").value;
+        if (num === '') {
+            alert("Por favor ingresa un número.");
+            return;
+        }
+        let resultado = Math.pow(num, 2);
+        document.getElementById("display").value = `${num}^2 = ${resultado}`;
+    }
+
+    function verificarParImpar() {
+        let num = document.getElementById("display").value;
+        if (num === '') {
+            alert("Por favor ingresa un número.");
+            return;
+        }
+        let resultado = (num % 2 === 0) ? "par" : "impar";
+        document.getElementById("display").value = `El número ${num} es ${resultado}.`;
+    }
+
+    function verificarPrimo() {
+        let num = document.getElementById("display").value;
+        if (num === '') {
+            alert("Por favor ingresa un número.");
+            return;
+        }
+        num = parseInt(num);
+        let esPrimo = true;
+        if (num < 2) {
+            esPrimo = false;
+        }
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                esPrimo = false;
+                break;
+            }
+        }
+        let mensaje = esPrimo ? `El número ${num} es primo.` : `El número ${num} no es primo.`;
+        document.getElementById("display").value = mensaje;
+    }
+</script>
+</body>
+</html>
